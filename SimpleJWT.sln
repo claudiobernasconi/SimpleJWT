@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleJWT", "SimpleJWT\SimpleJWT.csproj", "{721E05E4-4369-43A0-ADC2-EBBBF7BEC121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleJWT.Test", "SimpleJWT.Test\SimpleJWT.Test.csproj", "{2ABE7884-DE03-4D26-B1F1-28951DD8A609}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{721E05E4-4369-43A0-ADC2-EBBBF7BEC121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{721E05E4-4369-43A0-ADC2-EBBBF7BEC121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{721E05E4-4369-43A0-ADC2-EBBBF7BEC121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{721E05E4-4369-43A0-ADC2-EBBBF7BEC121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ABE7884-DE03-4D26-B1F1-28951DD8A609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ABE7884-DE03-4D26-B1F1-28951DD8A609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ABE7884-DE03-4D26-B1F1-28951DD8A609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ABE7884-DE03-4D26-B1F1-28951DD8A609}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
