@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using SimpleJWT.Base64;
 
 namespace SimpleJWT
 {
 	public class JwtDecoder : IJwtDecoder
 	{
 		private readonly IJsonDeserializer _jsonDeserializer;
+		private readonly IBase64Encoder _base64Encoder;
+		private readonly IBase64Decoder _base64Decoder;
 
-		public JwtDecoder(IJsonDeserializer jsonDeserializer)
+		public JwtDecoder(IJsonDeserializer jsonDeserializer, IBase64Encoder base64Encoder, IBase64Decoder base64Decoder)
 		{
 			_jsonDeserializer = jsonDeserializer;
+			_base64Encoder = base64Encoder;
+			_base64Decoder = base64Decoder;
 		}
 
 		public IDictionary<string, object> Decode(string jwt, string secret)
@@ -22,8 +27,8 @@ namespace SimpleJWT
 				throw new Exception(string.Format("Incorrect token count. Expected 3, received : {0}", parts.Length));
 			}
 
-			var header = _jsonDeserializer.Deserialize<Header>(DecodeBase64(parts[0]));
-			var payload = _jsonDeserializer.Deserialize<IDictionary<string, object>>(DecodeBase64(parts[1]));
+			var header = _jsonDeserializer.Deserialize<Header>(_base64Decoder.Decode(parts[0]));
+			var payload = _jsonDeserializer.Deserialize<IDictionary<string, object>>(_base64Decoder.Decode(parts[1]));
 			var signature = parts[2];
 
 			var rawSignature = parts[0] + "." + parts[1];
@@ -37,7 +42,7 @@ namespace SimpleJWT
 
 		private bool VerifySignature(string rawSignature, string secret, string signature)
 		{
-			return signature == EncodeBase64(Sign(rawSignature, secret));
+			return signature == _base64Encoder.Encode(Sign(rawSignature, secret));
 		}
 
 		private string Sign(string jwt, string secret)
@@ -49,18 +54,6 @@ namespace SimpleJWT
 			{
 				return Encoding.UTF8.GetString(hmac.ComputeHash(jwtByteArray));
 			}
-		}
-
-		private string EncodeBase64(string plainText)
-		{
-			var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-			return Convert.ToBase64String(plainTextBytes);
-		}
-
-		private string DecodeBase64(string base64Encoded)
-		{
-			var plainTextBytes = Convert.FromBase64String(base64Encoded);
-			return Encoding.UTF8.GetString(plainTextBytes);
 		}
 	}
 }

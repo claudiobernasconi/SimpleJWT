@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base64\Base64Encoder.cs" />
+    <Compile Include="Base64\IBase64Decoder.cs" />
+    <Compile Include="Base64\IBase64Encoder.cs" />
     <Compile Include="Header.cs" />
     <Compile Include="IJsonDeserializer.cs" />
     <Compile Include="IJsonSerializer.cs" />

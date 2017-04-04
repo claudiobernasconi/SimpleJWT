@@ -1,36 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using SimpleJWT.Base64;
 
 namespace SimpleJWT
 {
 	public class JwtEncoder : IJwtEncoder
 	{
 		private readonly IJsonSerializer _jsonSerializer;
+		private readonly IBase64Encoder _base64Encoder;
 
-		public JwtEncoder(IJsonSerializer jsonSerializer)
+		public JwtEncoder(IJsonSerializer jsonSerializer, IBase64Encoder base64Encoder)
 		{
 			_jsonSerializer = jsonSerializer;
+			_base64Encoder = base64Encoder;
 		}
 
 		public string Encode(IDictionary<string, object> payload, string secret)
 		{
 			var header = new Header("HS256");
 
-			var headerJsonBase64 = EncodeBase64(_jsonSerializer.Serialize(header));
-			var payloadJsonBase64 = EncodeBase64(_jsonSerializer.Serialize(payload));
+			var headerJsonBase64 = _base64Encoder.Encode(_jsonSerializer.Serialize(header));
+			var payloadJsonBase64 = _base64Encoder.Encode(_jsonSerializer.Serialize(payload));
 
 			var jwt = headerJsonBase64 + "." + payloadJsonBase64;
-			var signature = EncodeBase64(Sign(jwt, secret));
+			var signature = _base64Encoder.Encode(Sign(jwt, secret));
 
 			return jwt + "." + signature;
-		}
-
-		private string EncodeBase64(string plainText)
-		{
-			var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-			return Convert.ToBase64String(plainTextBytes);
 		}
 
 		private string Sign(string jwt, string secret)

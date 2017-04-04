@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SimpleJWT.Base64;
 
 namespace SimpleJWT.Test
 {
@@ -9,7 +10,7 @@ namespace SimpleJWT.Test
 		[TestMethod]
 		public void Test()
 		{
-			var jwtEncoder = new JwtEncoder(new NewtonsoftJsonSerializer());
+			var jwtEncoder = new JwtEncoder(new NewtonsoftJsonSerializer(), new Base64Encoder());
 
 			var payload = new Dictionary<string, object>
 			{
