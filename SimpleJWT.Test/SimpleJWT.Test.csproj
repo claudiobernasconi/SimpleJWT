@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Base64\Base64EncoderTest.cs" />
     <Compile Include="JwtDecoderTest.cs" />
     <Compile Include="JwtEncoderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
