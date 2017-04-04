@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SimpleJWT.Base64;
+using SimpleJWT.Serialization;
 
 namespace SimpleJWT.Test
 {

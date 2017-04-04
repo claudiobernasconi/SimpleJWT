@@ -1,4 +1,4 @@
-﻿namespace SimpleJWT
+﻿namespace SimpleJWT.Serialization
 {
 	public interface IJsonSerializer
 	{

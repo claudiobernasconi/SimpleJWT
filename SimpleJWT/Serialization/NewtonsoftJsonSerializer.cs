@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace SimpleJWT
+namespace SimpleJWT.Serialization
 {
 	public class NewtonsoftJsonSerializer : IJsonSerializer, IJsonDeserializer
 	{

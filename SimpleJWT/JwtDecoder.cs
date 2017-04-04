@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using SimpleJWT.Base64;
+using SimpleJWT.Serialization;
 
 namespace SimpleJWT
 {
