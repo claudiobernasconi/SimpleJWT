@@ -35,7 +35,7 @@ namespace SimpleJWT
 			var rawSignature = parts[0] + "." + parts[1];
 			if (!VerifySignature(rawSignature, secret, signature))
 			{
-				throw new Exception("Signature vertification failed");
+				throw new InvalidTokenSignatureException("Signature verification failed");
 			}
 
 			return payload;

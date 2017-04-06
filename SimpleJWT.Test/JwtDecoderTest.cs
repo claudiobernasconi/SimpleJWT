@@ -24,8 +24,8 @@ namespace SimpleJWT.Test
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(Exception))]
-		public void Decode_with_incorrect_key_throws_exception()
+		[ExpectedException(typeof(InvalidTokenSignatureException))]
+		public void Decode_with_incorrect_key_throws_InavlidTokenSignatureException()
 		{
 			var jwtDecoder = new JwtDecoder(new NewtonsoftJsonSerializer(), new Base64Encoder(), new Base64Encoder());
 

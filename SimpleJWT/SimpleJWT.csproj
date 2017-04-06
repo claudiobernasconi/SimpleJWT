@@ -47,6 +47,7 @@
     <Compile Include="Base64\IBase64Decoder.cs" />
     <Compile Include="Base64\IBase64Encoder.cs" />
     <Compile Include="Header.cs" />
+    <Compile Include="InvalidTokenSignatureException.cs" />
     <Compile Include="Serialization\IJsonDeserializer.cs" />
     <Compile Include="Serialization\IJsonSerializer.cs" />
     <Compile Include="IJwtDecoder.cs" />
