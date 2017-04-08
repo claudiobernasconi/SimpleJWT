@@ -13,6 +13,13 @@ namespace SimpleJWT
 		private readonly IBase64Encoder _base64Encoder;
 		private readonly IBase64Decoder _base64Decoder;
 
+        public JwtDecoder()
+        {
+            _jsonDeserializer = new NewtonsoftJsonSerializer();
+            _base64Encoder = new Base64Encoder();
+            _base64Decoder = new Base64Encoder();
+        }
+
 		public JwtDecoder(IJsonDeserializer jsonDeserializer, IBase64Encoder base64Encoder, IBase64Decoder base64Decoder)
 		{
 			_jsonDeserializer = jsonDeserializer;
