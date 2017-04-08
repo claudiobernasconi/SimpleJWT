@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleJWT
+namespace SimpleJWT.Exceptions
 {
     public class InvalidTokenSignatureException : Exception
     {

@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using SimpleJWT.Base64;
 using SimpleJWT.Serialization;
+using SimpleJWT.Exceptions;
 
 namespace SimpleJWT
 {
@@ -39,6 +40,8 @@ namespace SimpleJWT
 			var payload = _jsonDeserializer.Deserialize<IDictionary<string, object>>(_base64Decoder.Decode(parts[1]));
 			var signature = parts[2];
 
+            VerifyExpiration(payload);
+
 			var rawSignature = parts[0] + "." + parts[1];
 			if (!VerifySignature(rawSignature, secret, signature))
 			{
@@ -48,7 +51,20 @@ namespace SimpleJWT
 			return payload;
 		}
 
-		private bool VerifySignature(string rawSignature, string secret, string signature)
+        private void VerifyExpiration(IDictionary<string, object> payload)
+        {
+            object exp;
+            if (payload.TryGetValue("exp", out exp))
+            {
+                var now = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+                if( now > (double)exp)
+                {
+                    throw new ExpiredTokenException();
+                }
+            }
+        }
+
+        private bool VerifySignature(string rawSignature, string secret, string signature)
 		{
 			return signature == _base64Encoder.Encode(Sign(rawSignature, secret));
 		}

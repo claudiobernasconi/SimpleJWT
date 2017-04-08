@@ -48,8 +48,9 @@
     <Compile Include="Base64\IBase64Encoder.cs" />
     <Compile Include="Claims\ExpirationClaim.cs" />
     <Compile Include="Claims\IStandardClaim.cs" />
+    <Compile Include="Exceptions\ExpiredTokenException.cs" />
     <Compile Include="Header.cs" />
-    <Compile Include="InvalidTokenSignatureException.cs" />
+    <Compile Include="Exceptions\InvalidTokenSignatureException.cs" />
     <Compile Include="Serialization\IJsonDeserializer.cs" />
     <Compile Include="Serialization\IJsonSerializer.cs" />
     <Compile Include="IJwtDecoder.cs" />

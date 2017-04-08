@@ -1,4 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SimpleJWT.Base64;
+using SimpleJWT.Claims;
+using SimpleJWT.Exceptions;
+using SimpleJWT.Serialization;
+using System;
+using System.Collections.Generic;
 
 namespace SimpleJWT.Test
 {
@@ -31,5 +37,21 @@ namespace SimpleJWT.Test
 
 			jwtDecoder.Decode(jwt, secret);
 		}
+
+        [TestMethod]
+        [ExpectedException(typeof(ExpiredTokenException))]
+        public void Decode_with_expired_Token_Throws_ExpiredTokenException()
+        {
+            var jwtEncoder = new JwtEncoder(new NewtonsoftJsonSerializer(), new Base64Encoder(), new List<IStandardClaim>());
+            const string secret = "secret";
+
+            var payload = new Dictionary<string, object>();
+            payload.Add("exp", DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds-1);
+            
+            var jwtDecoder = new JwtDecoder();
+            var jwt = jwtEncoder.Encode(payload, secret);
+
+            jwtDecoder.Decode(jwt, secret);
+        }
 	}
 }
