@@ -1,6 +1,13 @@
 # SimpleJWT
 The most simplistic .NET Json Web Token (JWT) Library.
 
+## Target Frameworks
+* .NET Standard 1.4
+* .NET Framework 4.5.2
+
+## NuGet
+* Package available on [NuGet.org](https://www.nuget.org/packages/SimpleJWT/)
+
 ## Features
 * Encodes and decodes Json Web Tokens (JWT)
 * Verifies the signature while decoding

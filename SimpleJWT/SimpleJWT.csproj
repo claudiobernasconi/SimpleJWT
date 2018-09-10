@@ -8,6 +8,8 @@
         <RepositoryUrl>https://github.com/claudiobernasconi/SimpleJWT</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <PackageTags>Json Web Token, JWT, Authentication</PackageTags>
+		<Title>Simple JWT</Title>
+        <Description>The most simplistic .NET Json Web Token (JWT) Library.</Description>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
