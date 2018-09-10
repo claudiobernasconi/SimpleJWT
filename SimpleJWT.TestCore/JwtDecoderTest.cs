@@ -6,7 +6,7 @@ using SimpleJWT.Serialization;
 using System;
 using System.Collections.Generic;
 
-namespace SimpleJWT.Test
+namespace SimpleJWT.TestCore
 {
     [TestClass]
     public class JwtDecoderTest

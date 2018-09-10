@@ -4,7 +4,7 @@ using SimpleJWT.Claims;
 using SimpleJWT.Serialization;
 using System.Collections.Generic;
 
-namespace SimpleJWT.Test
+namespace SimpleJWT.TestCore
 {
     [TestClass]
     public class JwtEncoderTest
