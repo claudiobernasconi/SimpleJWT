@@ -10,6 +10,7 @@
         <PackageTags>Json Web Token, JWT, Authentication</PackageTags>
 		<Title>Simple JWT</Title>
         <Description>The most simplistic .NET Json Web Token (JWT) Library.</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
     <ItemGroup>
       <Compile Remove="Properties\**" />
