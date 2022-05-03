@@ -62,3 +62,6 @@ Implement the ```IStandardClaim``` interface to automatically add a claim to the
 * Dropped explicit target framework ```net452``` (It's still supported because of the ```netstandard1.4``` target framework)
 * Removed parameterless contructors for ```JwtDecoder``` and ```JwtEncoder``` types.
 * Updated Newtonsoft.Json to the latest version.
+
+## Known issues 2.0.0
+* ```ExpirationClaim``` is internal (instead of public). Fixed in 2.0.1.
