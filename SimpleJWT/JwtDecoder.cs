@@ -1,10 +1,10 @@
-﻿using SimpleJWT.Base64;
-using SimpleJWT.Exceptions;
-using SimpleJWT.Serialization;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using SimpleJWT.Base64;
+using SimpleJWT.Exceptions;
+using SimpleJWT.Serialization;
 
 namespace SimpleJWT
 {
@@ -13,13 +13,6 @@ namespace SimpleJWT
         private readonly IJsonDeserializer _jsonDeserializer;
         private readonly IBase64Encoder _base64Encoder;
         private readonly IBase64Decoder _base64Decoder;
-
-        public JwtDecoder()
-        {
-            _jsonDeserializer = new NewtonsoftJsonSerializer();
-            _base64Encoder = new Base64Encoder();
-            _base64Decoder = new Base64Encoder();
-        }
 
         public JwtDecoder(IJsonDeserializer jsonDeserializer, IBase64Encoder base64Encoder, IBase64Decoder base64Decoder)
         {
