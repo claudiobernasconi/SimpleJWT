@@ -10,11 +10,11 @@ namespace SimpleJWT.TestCore
     public class JwtEncoderTest
     {
         const string secret = "secret";
-        private readonly Dictionary<string, object> _payload = new Dictionary<string, object>
+        private readonly Dictionary<string, object> _payload = new()
         {
-            {"sub", "1234567890"},
-            {"name", "John Doe"},
-            {"admin", true}
+            { "sub", "1234567890" },
+            { "name", "John Doe" },
+            { "admin", true }
         };
 
         [TestMethod]
@@ -32,7 +32,7 @@ namespace SimpleJWT.TestCore
             var testClaim = new TestClaim();
             var jwtEncoder = new JwtEncoder(new NewtonsoftJsonSerializer(), new Base64Encoder(), new List<IStandardClaim>() { testClaim });
 
-            var jwt = jwtEncoder.Encode(_payload, secret);
+            jwtEncoder.Encode(_payload, secret);
             Assert.IsTrue(testClaim.WasCalled);
         }
 

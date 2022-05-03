@@ -29,7 +29,6 @@ namespace SimpleJWT
                 throw new Exception(string.Format("Incorrect token count. Expected 3, received : {0}", parts.Length));
             }
 
-            var header = _jsonDeserializer.Deserialize<Header>(_base64Decoder.Decode(parts[0]));
             var payload = _jsonDeserializer.Deserialize<IDictionary<string, object>>(_base64Decoder.Decode(parts[1]));
             var signature = parts[2];
 
