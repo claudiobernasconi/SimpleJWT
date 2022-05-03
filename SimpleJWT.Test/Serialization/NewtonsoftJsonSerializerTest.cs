@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SimpleJWT.Serialization;
-using System;
 
 namespace SimpleJWT.TestCore.Serialization
 {

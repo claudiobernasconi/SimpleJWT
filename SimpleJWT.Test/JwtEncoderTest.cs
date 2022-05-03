@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SimpleJWT.Base64;
 using SimpleJWT.Claims;
 using SimpleJWT.Serialization;
-using System.Collections.Generic;
 
 namespace SimpleJWT.TestCore
 {
