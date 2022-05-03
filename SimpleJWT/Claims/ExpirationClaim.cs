@@ -2,13 +2,13 @@
 
 namespace SimpleJWT.Claims
 {
-    internal class ExpirationClaim : IStandardClaim
+    public class ExpirationClaim : IStandardClaim
     {
-        private readonly int expirationInMinutes;
+        private readonly int _expirationInMinutes;
 
         public ExpirationClaim(int expirationInMinutes = 30)
         {
-            this.expirationInMinutes = expirationInMinutes;
+            _expirationInMinutes = expirationInMinutes;
         }
 
         public string Key
@@ -18,7 +18,7 @@ namespace SimpleJWT.Claims
 
         public object GetValue()
         {
-            return DateTime.UtcNow.AddMinutes(expirationInMinutes).Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+            return DateTime.UtcNow.AddMinutes(_expirationInMinutes).Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
         }
     }
 }
