@@ -12,9 +12,11 @@
         <Description>The most simplistic .NET Json Web Token (JWT) Library.</Description>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+      <Compile Remove="Properties\**" />
+      <EmbeddedResource Remove="Properties\**" />
+      <None Remove="Properties\**" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Properties\" />
+      <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     </ItemGroup>
 </Project>
