@@ -8,7 +8,7 @@ This repository demonstrates the basic functionality of encoding and decoding JW
 * [Keycloak](https://github.com/keycloak/keycloak) (open-source)
 
 ## Target Frameworks
-* .NET Standard 1.4
+* .NET Standard 2.0
 
 ## NuGet
 * Package available on [NuGet.org](https://www.nuget.org/packages/SimpleJWT/)
@@ -24,7 +24,7 @@ This repository demonstrates the basic functionality of encoding and decoding JW
 The use of dependency injection (if available) is recommended. However, the following code demonstrates the basic usage.
 ## Encode
 ```csharp
-var jwtEncoder = new JwtEncoder(new NewtonsoftJsonSerializer(), new Base64Encoder(), new List<IStandardClaim>() { new ExpirationClaim() });
+var jwtEncoder = new JwtEncoder(new SystemTextJsonSerializer(), new Base64Encoder(), new List<IStandardClaim>() { new ExpirationClaim() });
 
 var payload = new Dictionary<string, object>
 {
@@ -39,7 +39,7 @@ var jwt = jwtEncoder.Encode(payload, secret);
 
 ## Decode
 ```csharp
-var jwtDecoder = new JwtDecoder(new NewtonsoftJsonSerializer(), new Base64Encoder(), new Base64Encoder());
+var jwtDecoder = new JwtDecoder(new SystemTextJsonSerializer(), new Base64Encoder(), new Base64Encoder());
 
 const string secret = "secret";
 const string jwt = @"eyJUeXAiOiJKV1QiLCJBbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibm
@@ -62,6 +62,11 @@ Implement the ```IStandardClaim``` interface to automatically add a claim to the
 * Dropped explicit target framework ```net452``` (It's still supported because of the ```netstandard1.4``` target framework)
 * Removed parameterless contructors for ```JwtDecoder``` and ```JwtEncoder``` types.
 * Updated Newtonsoft.Json to the latest version.
+
+## Breaking changes from 2.0.x to 3.0
+* Changed target framework from `netstandard1.4` to `netstandard2.0` to support `System.Text.Json`.
+* Removed dependency on `Newtonsoft.Json` and replaced it with an implementation using `System.Text.Json`.
+* The `IJwtDecoder` interface now returns `IDictionary<string, object>` instead of `T`.
 
 ## Known issues 2.0.0
 * ```ExpirationClaim``` is internal (instead of public). Fixed in 2.0.1.

@@ -1,7 +1,9 @@
-﻿namespace SimpleJWT.Serialization
+﻿using System.Collections.Generic;
+
+namespace SimpleJWT.Serialization
 {
-	public interface IJsonDeserializer
-	{
-		T Deserialize<T>(string json);
-	}
+    public interface IJsonDeserializer
+    {
+        IDictionary<string, object> Deserialize(string json);
+    }
 }

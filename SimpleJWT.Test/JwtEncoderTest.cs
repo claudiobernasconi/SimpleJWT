@@ -20,7 +20,7 @@ namespace SimpleJWT.TestCore
         [TestMethod]
         public void Encode_Token()
         {
-            var jwtEncoder = new JwtEncoder(new NewtonsoftJsonSerializer(), new Base64Encoder(), new List<IStandardClaim>());
+            var jwtEncoder = new JwtEncoder(new SystemTextJsonSerializer(), new Base64Encoder(), new List<IStandardClaim>());
 
             var jwt = jwtEncoder.Encode(_payload, secret);
             Assert.AreEqual("eyJUeXAiOiJKV1QiLCJBbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.du+/ve+/vUNj77+977+9Tu+/vdSmUzjvv71UBnFMbe+/vQTvv71b77+9yZ7vv73vv73vv70Y77+9Uw==", jwt);
@@ -30,7 +30,7 @@ namespace SimpleJWT.TestCore
         public void StandardClaims_Are_Included()
         {
             var testClaim = new TestClaim();
-            var jwtEncoder = new JwtEncoder(new NewtonsoftJsonSerializer(), new Base64Encoder(), new List<IStandardClaim>() { testClaim });
+            var jwtEncoder = new JwtEncoder(new SystemTextJsonSerializer(), new Base64Encoder(), new List<IStandardClaim>() { testClaim });
 
             jwtEncoder.Encode(_payload, secret);
             Assert.IsTrue(testClaim.WasCalled);

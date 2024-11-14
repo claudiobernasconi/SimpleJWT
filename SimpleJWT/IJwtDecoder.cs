@@ -2,8 +2,8 @@
 
 namespace SimpleJWT
 {
-	public interface IJwtDecoder
-	{
-		IDictionary<string, object> Decode(string jwt, string secret);
-	}
+    public interface IJwtDecoder
+    {
+        IDictionary<string, object> Decode(string jwt, string secret);
+    }
 }

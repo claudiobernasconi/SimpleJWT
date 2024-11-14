@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>netstandard1.4</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>2.0.1</Version>
+        <Version>3.0.0</Version>
         <Authors>Claudio Bernasconi</Authors>
-        <Copyright>Copyright © 2017-2022</Copyright>
+        <Copyright>Copyright © 2017-2024</Copyright>
         <RepositoryUrl>https://github.com/claudiobernasconi/SimpleJWT</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <PackageTags>Json Web Token, JWT, Authentication</PackageTags>
@@ -18,6 +18,6 @@
       <None Remove="Properties\**" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="System.Text.Json" Version="9.0.0" />
     </ItemGroup>
 </Project>

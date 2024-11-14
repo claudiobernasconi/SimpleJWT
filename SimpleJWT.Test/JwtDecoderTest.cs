@@ -14,7 +14,7 @@ namespace SimpleJWT.TestCore
         [TestMethod]
         public void Decode_with_correct_key()
         {
-            var jwtDecoder = new JwtDecoder(new NewtonsoftJsonSerializer(), new Base64Encoder(), new Base64Encoder());
+            var jwtDecoder = new JwtDecoder(new SystemTextJsonSerializer(), new Base64Encoder(), new Base64Encoder());
 
             const string secret = "secret";
             const string jwt = "eyJUeXAiOiJKV1QiLCJBbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.du+/ve+/vUNj77+977+9Tu+/vdSmUzjvv71UBnFMbe+/vQTvv71b77+9yZ7vv73vv73vv70Y77+9Uw==";
@@ -30,7 +30,7 @@ namespace SimpleJWT.TestCore
         [ExpectedException(typeof(InvalidTokenSignatureException))]
         public void Decode_with_incorrect_key_throws_InavlidTokenSignatureException()
         {
-            var jwtDecoder = new JwtDecoder(new NewtonsoftJsonSerializer(), new Base64Encoder(), new Base64Encoder());
+            var jwtDecoder = new JwtDecoder(new SystemTextJsonSerializer(), new Base64Encoder(), new Base64Encoder());
 
             const string secret = "wrong-key";
             const string jwt = "eyJUeXAiOiJKV1QiLCJBbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.du+/ve+/vUNj77+977+9Tu+/vdSmUzjvv71UBnFMbe+/vQTvv71b77+9yZ7vv73vv73vv70Y77+9Uw==";
@@ -42,7 +42,7 @@ namespace SimpleJWT.TestCore
         [ExpectedException(typeof(ExpiredTokenException))]
         public void Decode_with_expired_Token_Throws_ExpiredTokenException()
         {
-            var jwtEncoder = new JwtEncoder(new NewtonsoftJsonSerializer(), new Base64Encoder(), new List<IStandardClaim>());
+            var jwtEncoder = new JwtEncoder(new SystemTextJsonSerializer(), new Base64Encoder(), new List<IStandardClaim>());
             const string secret = "secret";
 
             var payload = new Dictionary<string, object>
@@ -50,7 +50,7 @@ namespace SimpleJWT.TestCore
                 { "exp", DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds - 1 }
             };
 
-            var jwtDecoder = new JwtDecoder(new NewtonsoftJsonSerializer(), new Base64Encoder(), new Base64Encoder());
+            var jwtDecoder = new JwtDecoder(new SystemTextJsonSerializer(), new Base64Encoder(), new Base64Encoder());
             var jwt = jwtEncoder.Encode(payload, secret);
 
             jwtDecoder.Decode(jwt, secret);

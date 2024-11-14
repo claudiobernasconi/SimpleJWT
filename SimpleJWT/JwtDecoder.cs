@@ -29,7 +29,8 @@ namespace SimpleJWT
                 throw new Exception(string.Format("Incorrect token count. Expected 3, received : {0}", parts.Length));
             }
 
-            var payload = _jsonDeserializer.Deserialize<IDictionary<string, object>>(_base64Decoder.Decode(parts[1]));
+            var payloadPart = _base64Decoder.Decode(parts[1]);
+            var payload = _jsonDeserializer.Deserialize(payloadPart);
             var signature = parts[2];
 
             VerifyExpiration(payload);
@@ -48,7 +49,7 @@ namespace SimpleJWT
             if (payload.TryGetValue("exp", out object exp))
             {
                 var now = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
-                if (now > (double)exp)
+                if (now > double.Parse(exp.ToString()))
                 {
                     throw new ExpiredTokenException();
                 }
